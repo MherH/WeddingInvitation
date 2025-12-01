@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Wedding invitation for Mher & Angela - June 6, 2026">
+    <meta name="theme-color" content="#d4a574">
+    <title>Mher & Angela - Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Music Player -->
+    <div class="music-player">
+        <button id="musicToggle" class="music-btn" aria-label="Toggle music">
+            <svg id="musicIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                <path id="soundWave" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" stroke-linecap="round"></path>
+            </svg>
+            <svg id="muteIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+        </button>
+        <audio id="backgroundMusic" loop>
+            <source src="music.mp3" type="audio/mpeg">
+            <source src="music.ogg" type="audio/ogg">
+        </audio>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="names">
+                <h1 class="name-1">Mher</h1>
+                <span class="ampersand">&</span>
+                <h1 class="name-2">Angela</h1>
+            </div>
+            <p class="subtitle">We're getting married!</p>
+            <div class="date-badge">
+                <span class="month">June</span>
+                <span class="day">06</span>
+                <span class="year">2026</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Invitation Message -->
+    <section class="invitation-message">
+        <div class="container">
+            <h2 class="section-title">Dear Friends & Family</h2>
+            <p class="message-text">
+                We are delighted to invite you to celebrate the most beautiful and joyful day of our lives - our wedding day.
+                <br><br>
+                Join us as we begin our journey together as husband and wife. Your presence would make our special day even more meaningful.
+            </p>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="gallery-container">
+                <div class="gallery-main">
+                    <div class="gallery-slide active">
+                        <img src="" alt="Gallery Image 1" id="mainImage">
+                        <div class="gallery-placeholder" id="galleryPlaceholder" style="display: none;">
+                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" stroke="#d4a574" stroke-width="2" fill="none"/>
+                                <path d="M35 50 L45 60 L65 40" stroke="#d4a574" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p>Add your photos to the images folder</p>
+                            <p class="placeholder-hint">Name them: photo1.jpg, photo2.jpg, etc.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-nav">
+                        <button class="gallery-btn prev" id="prevBtn" aria-label="Previous image">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="gallery-btn next" id="nextBtn" aria-label="Next image">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="gallery-thumbnails" id="thumbnailContainer">
+                    <!-- Thumbnails will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="section-title">Save the Date</h2>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <p class="event-date">June 6, 2026</p>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="schedule-section">
+        <div class="container">
+            <h2 class="section-title">Wedding Schedule</h2>
+            <div class="schedule-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">11:30</div>
+                    <div class="timeline-content">
+                        <h3>Bride's Home</h3>
+                        <p>Address will be updated</p>
+                        <a href="#" class="map-link">View Map</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">14:00</div>
+                    <div class="timeline-content">
+                        <h3>Church Ceremony</h3>
+                        <p>St. George Church<br>Mughni, Armenia</p>
+                        <a href="https://www.google.com/maps/place/%D5%8D%D5%B8%D6%82%D6%80%D5%A2+%D4%B3%D6%87%D5%B8%D6%80%D5%A3+%D5%A5%D5%AF%D5%A5%D5%B2%D5%A5%D6%81%D5%AB/@40.3150116,44.3692328,17z/data=!3m1!4b1!4m6!3m5!1s0x406a9b42242cd659:0xe2a4c8fe5b04a9b5!8m2!3d40.3150075!4d44.3718077!16s%2Fm%2F0bs4gv3?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">View Map</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">15:00</div>
+                    <div class="timeline-content">
+                        <h3>Groom's Home</h3>
+                        <p>Address will be updated</p>
+                        <a href="#" class="map-link">View Map</a>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">17:30</div>
+                    <div class="timeline-content">
+                        <h3>Reception</h3>
+                        <p>Restaurant name and address</p>
+                        <a href="#" class="map-link">View Map</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Location</h2>
+            <p class="map-subtitle">St. George Church, Mughni, Armenia</p>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1219.2!2d44.3718077!3d40.3150075!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406a9b42242cd659%3A0xe2a4c8fe5b04a9b5!2z0KHRg9C-0YHRgtC-0L0g0JPQvtGA0L7Qs9C-0L0g0JvRltC-0YHRgtC-0L0g0JXQutC-0YLQtdGA0L7QstC-0L0!5e0!3m2!1sen!2sus!4v1736179200000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0; border-radius: 20px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="St. George Church, Mughni, Armenia">
+                </iframe>
+            </div>
+            <div class="map-link-container">
+                <a href="https://www.google.com/maps/place/%D5%8D%D5%B8%D6%82%D6%80%D5%A2+%D4%B3%D6%87%D5%B8%D6%80%D5%A3+%D5%A5%D5%AF%D5%A5%D5%B2%D5%A5%D6%81%D5%AB/@40.3150116,44.3692328,17z/data=!3m1!4b1!4m6!3m5!1s0x406a9b42242cd659:0xe2a4c8fe5b04a9b5!8m2!3d40.3150075!4d44.3718077!16s%2Fm%2F0bs4gv3?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" 
+                   target="_blank" 
+                   class="map-link-btn">
+                    Open in Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="container">
+            <h2 class="section-title">RSVP</h2>
+            <p class="rsvp-subtitle">Please confirm your attendance by May 20th, 2026</p>
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="form-group">
+                    <input type="text" id="guestName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <select id="attendance" required>
+                        <option value="">Will you attend?</option>
+                        <option value="yes">Yes, I'll be there!</option>
+                        <option value="no">Sorry, can't make it</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="side">
+                        <option value="">Which side? (Optional)</option>
+                        <option value="mher">Mher's Side</option>
+                        <option value="angela">Angela's Side</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Message (Optional)" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send RSVP</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">We can't wait to celebrate with you!</p>
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+                <a href="#" class="social-link" aria-label="WhatsApp">WhatsApp</a>
+            </div>
+            <p class="footer-copyright">© 2026 Mher & Angela • Made with ❤️</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

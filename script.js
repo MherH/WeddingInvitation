@@ -6,34 +6,85 @@ const muteIcon = document.getElementById('muteIcon');
 const soundWave = document.getElementById('soundWave');
 
 let isPlaying = false;
+let userInteracted = false;
+
+// Set volume and ensure unmuted
+if (backgroundMusic) {
+    backgroundMusic.volume = 0.5; // Set volume to 50% (adjust as needed)
+    backgroundMusic.muted = false;
+}
 
 // Try to play music on page load
-window.addEventListener('DOMContentLoaded', () => {
-    // Attempt to play music (may require user interaction on some browsers)
+function tryAutoplay() {
+    if (!backgroundMusic || userInteracted) return;
+    
     const playPromise = backgroundMusic.play();
     
     if (playPromise !== undefined) {
         playPromise
             .then(() => {
                 isPlaying = true;
+                backgroundMusic.muted = false;
                 updateMusicIcon();
             })
             .catch(error => {
-                // Autoplay was prevented, user will need to click to play
-                console.log('Autoplay prevented:', error);
+                // Autoplay was prevented, will try again on user interaction
+                console.log('Autoplay prevented, waiting for user interaction');
                 isPlaying = false;
                 updateMusicIcon();
             });
     }
+}
+
+// Try autoplay when page loads
+window.addEventListener('DOMContentLoaded', () => {
+    tryAutoplay();
 });
 
+// Also try after a short delay (some browsers need this)
+setTimeout(() => {
+    if (!isPlaying && !userInteracted) {
+        tryAutoplay();
+    }
+}, 500);
+
+// Enable music on any user interaction (click, touch, scroll)
+function enableMusicOnInteraction() {
+    if (!userInteracted && backgroundMusic) {
+        userInteracted = true;
+        if (!isPlaying) {
+            backgroundMusic.play().then(() => {
+                isPlaying = true;
+                backgroundMusic.muted = false;
+                updateMusicIcon();
+            }).catch(err => {
+                console.log('Could not play music:', err);
+            });
+        }
+    }
+}
+
+// Listen for user interactions
+document.addEventListener('click', enableMusicOnInteraction, { once: true });
+document.addEventListener('touchstart', enableMusicOnInteraction, { once: true });
+document.addEventListener('scroll', enableMusicOnInteraction, { once: true });
+
 musicToggle.addEventListener('click', () => {
+    userInteracted = true; // Mark that user has interacted
+    
     if (isPlaying) {
         backgroundMusic.pause();
         isPlaying = false;
     } else {
-        backgroundMusic.play();
-        isPlaying = true;
+        backgroundMusic.muted = false; // Ensure unmuted
+        backgroundMusic.play().then(() => {
+            isPlaying = true;
+            updateMusicIcon();
+        }).catch(err => {
+            console.log('Could not play music:', err);
+            isPlaying = false;
+            updateMusicIcon();
+        });
     }
     updateMusicIcon();
 });
